@@ -12,6 +12,14 @@ footer {
   object-fit: cover;
 }
 
+#tag-output {
+  height: 220px;
+}
+
+#description-output {
+  height: 220px;
+}
+
 .bs-icon {
   --bs-icon-size: .75rem;
   display: flex;
