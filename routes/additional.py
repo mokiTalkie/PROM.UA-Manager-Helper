@@ -13,7 +13,7 @@ def index() -> str:
         str: The rendered HTML content of the main template with the content of the index page.
     """
 
-    return render_template("main_template.html", content=render_template("index.html"))
+    return render_template("main_template.html", route_product='tool/product', route_category='tool/product', content=render_template("index.html"))
 
 
 @additional.route("/about", methods=["GET"])
@@ -25,7 +25,7 @@ def about() -> str:
         str: The HTML content of the 'about.html' template rendered inside the 'main_template.html' template.
     """
 
-    return render_template("main_template.html", content=render_template("about.html"))
+    return render_template("main_template.html", route_product='tool/product', route_category='tool/product', content=render_template("about.html"))
 
 
 @additional.route("/contacts", methods=["GET"])
@@ -38,5 +38,5 @@ def contacts() -> str:
         within the "main_template.html" file.
     """
     return render_template(
-        "main_template.html", content=render_template("contacts.html")
+        "main_template.html", route_product='tool/product', route_category='tool/product', content=render_template("contacts.html")
     )
