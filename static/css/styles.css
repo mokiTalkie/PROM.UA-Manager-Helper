@@ -20,6 +20,37 @@ footer {
   height: 220px;
 }
 
+.button-loading {
+  position: relative;
+}
+
+.button-loading::after {
+  content: "";
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 1rem;
+  height: 1rem;
+  margin-top: -0.5rem;
+  margin-left: -0.5rem;
+  border-radius: 50%;
+  border: 0.2rem solid rgba(0, 0, 0, 0.1);
+  border-top-color: #666;
+  animation: spin 1s linear infinite;
+}
+
+.button-loading:active::after,
+.button-loading:focus::after {
+  display: block;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 .bs-icon {
   --bs-icon-size: .75rem;
   display: flex;
