@@ -3,6 +3,11 @@ import os
 import openai
 from dotenv import load_dotenv
 
+from templates.text_templates import (CATEGORY_DESCRIPTION_PROMPT,
+                                      CATEGORY_SEARCH_QUERIES_PROMPT,
+                                      PRODUCT_DESCRIPTION_PROMPT,
+                                      PRODUCT_SEARCH_QUERY_PROMPT)
+
 load_dotenv()
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
@@ -27,16 +32,9 @@ class TextHelper:
         str
             A string containing the generated search queries."""
 
-        PRODUCT_SEARCH_QUERY_PROMPT = f"""Need search queries for {product_name}:
-    Use only those queries that will be used to search for your product.
-    For example, long women's dress, green dress, cotton green dress...
-    Enter the search terms separated by commas. The more queries you add, the better your product will appear.
-    Do not use additional words like "buy", "order", "region" - they are added automatically.
-    And make this queries in one line but separated with coma.
-    """
         ai_response = openai.Completion.create(
             engine=os.getenv("AI_TEXT_MODEL"),
-            prompt=PRODUCT_SEARCH_QUERY_PROMPT,
+            prompt=PRODUCT_SEARCH_QUERY_PROMPT.format(product_name),
             max_tokens=2000,
         )
 
@@ -58,14 +56,9 @@ class TextHelper:
             A string containing the generated promotional description.
         """
 
-        PRODUCT_DESCRIPTION_PROMPT = f"""
-        Write a promo description for the {product_name}. It should be concise, moderately brief, and salesy. 
-        Try to keep it to 2-3 paragraphs and about 100 words. 
-        Highlight the name of the product, and in the output, leave only the product description, without your own comments.
-        """
         ai_response = openai.Completion.create(
             engine=os.getenv("AI_TEXT_MODEL"),
-            prompt=PRODUCT_DESCRIPTION_PROMPT,
+            prompt=PRODUCT_DESCRIPTION_PROMPT.format(product_name),
             max_tokens=2000,
         )
 
@@ -84,14 +77,9 @@ class TextHelper:
         Returns:
         str: A string containing the generated search tags."""
 
-        CATEGORY_SEARCH_QUERIES_PROMPT = f"""
-        Generate search tags for product category {category_name}. 
-        These tags should be adapted for the e-commerce site. 
-        Return only the search tags themselves, without their own comments, on a single line and separated by a comma.
-        """
         ai_response = openai.Completion.create(
             engine=os.getenv("AI_TEXT_MODEL"),
-            prompt=CATEGORY_SEARCH_QUERIES_PROMPT,
+            prompt=CATEGORY_SEARCH_QUERIES_PROMPT.format(category_name),
             max_tokens=2000,
         )
 
@@ -108,15 +96,9 @@ class TextHelper:
         Returns:
         str: A string containing the generated product group description."""
 
-        CATEGORY_DESCRIPTION_PROMPT = f"""
-        Generate a description for a product group {category_name}. 
-        The description should not be redundant, but it should sell.
-        Try to keep it to 2-3 paragraphs and about 100 words.  
-        Return only the description itself, without your own comments.
-        """
         ai_response = openai.Completion.create(
             engine=os.getenv("AI_TEXT_MODEL"),
-            prompt=CATEGORY_DESCRIPTION_PROMPT,
+            prompt=CATEGORY_DESCRIPTION_PROMPT.format(category_name),
             max_tokens=2000,
         )
 
