@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify, render_template, request
-
+import asyncio
 from external_api.openai_api import TextHelper
 from templates.text_templates import (
     PRODUCT_TOOL_HEAD,
@@ -26,13 +26,19 @@ def product_load() -> str:
     )
 
 
+async def async_ai_request_for_product(user_input: str) -> list[str]:
+    return await asyncio.gather(
+        TextHelper.get_product_search_queries(product_name=user_input),
+        TextHelper.get_product_description(product_name=user_input),
+    )
+
+
 @tools.post("/product")
 def generate_product() -> str:
     user_input = request.form.get("input")
-    product_tags = TextHelper.get_product_search_queries(product_name=user_input)
-    product_description = TextHelper.get_product_description(product_name=user_input)
+    ai_response = asyncio.run(async_ai_request_for_product(user_input=user_input))
     return jsonify(
-        {"tags": product_tags.strip(), "description": product_description.strip()}
+        {"tags": ai_response[0].strip(), "description": ai_response[1].strip()}
     )
 
 
@@ -51,11 +57,17 @@ def category_load() -> str:
     )
 
 
+async def openai_request_for_category(user_input: str) -> list[str]:
+    return await asyncio.gather(
+        TextHelper.get_category_search_queries(category_name=user_input),
+        TextHelper.get_category_description(category_name=user_input),
+    )
+
+
 @tools.post("/category")
 def generate_category() -> str:
     user_input = request.form.get("input")
-    category_tags = TextHelper.get_category_search_queries(category_name=user_input)
-    category_description = TextHelper.get_category_description(category_name=user_input)
+    ai_response = asyncio.run(openai_request_for_category(user_input=user_input))
     return jsonify(
-        {"tags": category_tags.strip(), "description": category_description.strip()}
+        {"tags": ai_response[0].strip(), "description": ai_response[1].strip()}
     )
