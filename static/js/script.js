@@ -23,7 +23,7 @@ $(document).ready(function () {
       // On success, remove the 'disabled' and 'button-loading' classes from the button
       // Parse the response as a JSON object, and set the values of the tagOut and descOut variables
       success: function (response) {
-        $(this).removeClass('button-loading disabled');
+        $(this).removeClass('disabled button-loading');
         const JSONObj = JSON.parse(response);
         tagOut.val(JSONObj.tags);
         descOut.val(JSONObj.description);
@@ -35,13 +35,17 @@ $(document).ready(function () {
   $(category).click(function (e) {
     e.preventDefault();
     // Send a POST request to the 'category' URL with the input value
+    // Add 'disabled' and 'button-loading' classes to the button
+    $(this).addClass('disabled button-loading');
     $.ajax({
       type: 'POST',
       url: 'category',
       data: { 'input': userInput.val() },
       dataType: 'text',
+      // On success, remove the 'disabled' and 'button-loading' classes from the button
       // On success, parse the response as a JSON object, and set the values of the tagOut and descOut variables
       success: function (response) {
+        $(this).removeClass('disabled button-loading');
         const JSONObj = JSON.parse(response);
         tagOut.val(JSONObj.tags);
         descOut.val(JSONObj.description);
