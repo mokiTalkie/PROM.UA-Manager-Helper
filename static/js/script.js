@@ -6,14 +6,16 @@ const tagOut = $('#tag-output');
 const descOut = $("#description-output");
 const copyTags = $('.copy-tags');
 const copyDesc = $('.copy-desc');
+const preloader = $('.preloader');
+
+$(preloader).hide();
 
 // When the document is ready
 $(document).ready(function () {
   // When the 'product' button is clicked
   $(product).click(function (e) {
     e.preventDefault();
-    // Add 'disabled' and 'button-loading' classes to the button
-    $(this).addClass('disabled button-loading');
+    $(preloader).show();
     // Send a POST request to the 'product' URL with the input value
     $.ajax({
       type: 'POST',
@@ -23,7 +25,7 @@ $(document).ready(function () {
       // On success, remove the 'disabled' and 'button-loading' classes from the button
       // Parse the response as a JSON object, and set the values of the tagOut and descOut variables
       success: function (response) {
-        $(this).removeClass('disabled button-loading');
+        $(preloader).hide();
         const JSONObj = JSON.parse(response);
         tagOut.val(JSONObj.tags);
         descOut.val(JSONObj.description);
@@ -34,9 +36,9 @@ $(document).ready(function () {
   // When the 'category' button is clicked
   $(category).click(function (e) {
     e.preventDefault();
+    $(preloader).show();
     // Send a POST request to the 'category' URL with the input value
     // Add 'disabled' and 'button-loading' classes to the button
-    $(this).addClass('disabled button-loading');
     $.ajax({
       type: 'POST',
       url: 'category',
@@ -45,7 +47,7 @@ $(document).ready(function () {
       // On success, remove the 'disabled' and 'button-loading' classes from the button
       // On success, parse the response as a JSON object, and set the values of the tagOut and descOut variables
       success: function (response) {
-        $(this).removeClass('disabled button-loading');
+        $(preloader).hide();
         const JSONObj = JSON.parse(response);
         tagOut.val(JSONObj.tags);
         descOut.val(JSONObj.description);
