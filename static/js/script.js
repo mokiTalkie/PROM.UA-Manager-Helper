@@ -66,16 +66,16 @@ $(document).ready(function () {
       $temp.val(text).select();
       document.execCommand("copy");
       $temp.remove();
-      $(btn).text("Copied")
-        .css("background-color", "#28a745")
+      $(btn).text("Скопійовано")
+        .css("background-color", "#5a5a5a")
         .prop("disabled", true);
         
       // Reset the button text and styling after 2 seconds
       setTimeout(function () {
-        $(btn).text("Copy")
-          .css("background-color", "#4e5d6c")
+        $(btn).text("Копіювати")
+          .css("background-color", "#5bc0de")
           .prop("disabled", false);
-      }, 2000);
+      }, 1000);
     } else {
       // If the text is empty, show an alert message
       alert("Область із вихідним текстом порожня.");
