@@ -25,10 +25,7 @@ def product_load() -> str:
         route_product="product",
         route_category="category",
         content=render_template(
-            "tool.html",
-            source="product",
-            tool_header=PRODUCT_TOOL_HEAD,
-            tool_description=PRODUCT_TOOL_DESCRIPTION,
+            "product_tool.html",
         ),
     )
 
@@ -80,10 +77,7 @@ def category_load() -> str:
         route_product="product",
         route_category="category",
         content=render_template(
-            "tool.html",
-            source="category",
-            tool_header=CATEGORY_TOOL_HEAD,
-            tool_description=CATEGORY_TOOL_DESCRIPTION,
+            "category_tool.html",
         ),
     )
 
