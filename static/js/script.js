@@ -20,15 +20,14 @@ $(document).ready(function () {
     $.ajax({
       type: 'POST',
       url: 'product',
-      data: { 'input': userInput.val() },
-      dataType: 'text',
+      contentType: 'application/json',
+      data: JSON.stringify({ 'input': userInput.val() }),
       // On success, remove the 'disabled' and 'button-loading' classes from the button
       // Parse the response as a JSON object, and set the values of the tagOut and descOut variables
       success: function (response) {
         $(preloader).hide();
-        const JSONObj = JSON.parse(response);
-        tagOut.val(JSONObj.tags);
-        descOut.val(JSONObj.description);
+        tagOut.val(response.tags);
+        descOut.val(response.description);
       }.bind(this)
     });
   });
@@ -42,15 +41,14 @@ $(document).ready(function () {
     $.ajax({
       type: 'POST',
       url: 'category',
-      data: { 'input': userInput.val() },
-      dataType: 'text',
+      contentType: 'application/json',
+      data: JSON.stringify({ 'input': userInput.val() }),
       // On success, remove the 'disabled' and 'button-loading' classes from the button
       // On success, parse the response as a JSON object, and set the values of the tagOut and descOut variables
       success: function (response) {
         $(preloader).hide();
-        const JSONObj = JSON.parse(response);
-        tagOut.val(JSONObj.tags);
-        descOut.val(JSONObj.description);
+        tagOut.val(response.tags);
+        descOut.val(response.description);
       }
     });
   });
