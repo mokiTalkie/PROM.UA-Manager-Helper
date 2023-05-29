@@ -8,8 +8,6 @@ const copyTags = $('.copy-tags');
 const copyDesc = $('.copy-desc');
 const preloader = $('.preloader');
 
-$(preloader).hide();
-
 // When the document is ready
 $(document).ready(function () {
   // When the 'product' button is clicked
