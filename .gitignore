@@ -161,3 +161,4 @@ cython_debug/
 bootstrap_template.bsdesign
 experiments.py
 templates/experiment_temp.html
+.vscode/settings.json
