@@ -1,14 +1,12 @@
-from flask import Flask
+from fastapi import FastAPI
+from fastapi.staticfiles import StaticFiles
+
 from routes.additional import additional
 from routes.tools import tools
 
+app = FastAPI(debug=False, title="PromCat")
 
-def create_app() -> Flask:
-    app = Flask(__name__, template_folder='templates')
-    app.register_blueprint(blueprint=additional)
-    app.register_blueprint(blueprint=tools)
+app.mount("/static", StaticFiles(directory="static"), name="static")
 
-    return app
-
-
-app = create_app()
+app.include_router(additional)
+app.include_router(tools)
