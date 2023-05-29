@@ -64,6 +64,6 @@ This project is licensed under the [MIT License](LICENSE).
 
 ## Contact
 
-If you have any questions or suggestions, feel free to reach out to us at [email@example.com](mailto:email@example.com). We value your feedback!
+If you have any questions or suggestions, feel free to reach out to us at [moki.main@gmail.com](mailto:moki.main@gmail.com). We value your feedback!
 
 Thank you for using PROM UA Manager Helper. We hope our tools simplify and enhance your content management experience on the PROM.UA marketplace!
