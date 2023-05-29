@@ -44,7 +44,7 @@ async def openai_request_for_category(user_input: str) -> list[str]:
 
 
 @tools.get("/product")
-async def get_product_page(request: Request) -> str:
+async def get_product_page(request: Request) -> HTMLResponse:
     """
     Handler to return the HTML page for the product search tool.
 
@@ -60,7 +60,7 @@ async def get_product_page(request: Request) -> str:
 
 
 @tools.post("/product")
-async def generate_product(user_input: UserInput) -> HTMLResponse:
+async def generate_product(user_input: UserInput) -> JSONResponse:
     """
     Handler to generate the AI response for the product search tool.
 
@@ -77,7 +77,7 @@ async def generate_product(user_input: UserInput) -> HTMLResponse:
 
 
 @tools.get("/category")
-async def get_category_page(request: Request) -> str:
+async def get_category_page(request: Request) -> HTMLResponse:
     """
     Handler to return the HTML page for the category search tool.
 
@@ -93,7 +93,7 @@ async def get_category_page(request: Request) -> str:
 
 
 @tools.post("/category")
-async def generate_category(user_input: UserInput) -> str:
+async def generate_category(user_input: UserInput) -> JSONResponse:
     """
     Handler to generate the AI response for the category search tool.
 
