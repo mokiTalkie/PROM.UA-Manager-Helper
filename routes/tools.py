@@ -108,3 +108,30 @@ async def generate_category(user_input: UserInput) -> JSONResponse:
     return JSONResponse(
         {"tags": ai_response[0].strip(), "description": ai_response[1].strip()}
     )
+
+
+@tools.post("/repeat")
+async def repeat_request(user_input: UserInput) -> str:
+    match user_input.target:
+        case "product_tags":
+            ai_response = await FreeGPTTextHelper.get_product_search_queries(
+                product_name=user_input.input
+            )
+            return JSONResponse({"text": ai_response})
+        case "product_description":
+            ai_response = await FreeGPTTextHelper.get_product_description(
+                product_name=user_input.input
+            )
+            return JSONResponse({"text": ai_response})
+        case "category_tags":
+            ai_response = await FreeGPTTextHelper.get_category_search_queries(
+                category_name=user_input.input
+            )
+            return JSONResponse({"text": ai_response})
+        case "category_description":
+            ai_response = await FreeGPTTextHelper.get_category_description(
+                category_name=user_input.input
+            )
+            return JSONResponse({"text": ai_response})
+        case _:
+            return
