@@ -3,7 +3,8 @@ import asyncio
 from fastapi import APIRouter, Request
 from fastapi.responses import HTMLResponse, JSONResponse
 
-from external_api.openai_api import TextHelper
+# from external_api.openai_api import OpenAITextHelper
+from external_api.free_gpt_api import FreeGPTTextHelper
 from routes import UserInput, templates
 
 tools = APIRouter(prefix="/tools")
@@ -21,8 +22,8 @@ async def async_ai_request_for_product(user_input: str) -> list[str]:
     """
 
     return await asyncio.gather(
-        TextHelper.get_product_search_queries(product_name=user_input),
-        TextHelper.get_product_description(product_name=user_input),
+        FreeGPTTextHelper.get_product_search_queries(product_name=user_input),
+        FreeGPTTextHelper.get_product_description(product_name=user_input),
     )
 
 
@@ -38,8 +39,8 @@ async def openai_request_for_category(user_input: str) -> list[str]:
     """
 
     return await asyncio.gather(
-        TextHelper.get_category_search_queries(category_name=user_input),
-        TextHelper.get_category_description(category_name=user_input),
+        FreeGPTTextHelper.get_category_search_queries(category_name=user_input),
+        FreeGPTTextHelper.get_category_description(category_name=user_input),
     )
 
 
