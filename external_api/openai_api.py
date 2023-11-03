@@ -12,7 +12,7 @@ load_dotenv()
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
 
-class TextHelper:
+class OpenAITextHelper:
     """
     A class that provides helper functions for generating product search queries and descriptions.
     """
