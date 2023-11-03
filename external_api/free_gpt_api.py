@@ -29,23 +29,6 @@ class FreeGPTTextHelper:
         str
             A string containing the generated search queries."""
 
-        # ai_response = await openai.Completion.acreate(
-        #     engine=os.getenv("AI_TEXT_MODEL"),
-        #     prompt=PRODUCT_SEARCH_QUERY_PROMPT.format(product_name),
-        #     temperature=0.5,
-        #     max_tokens=2000,
-        #     n=1,
-        #     stop=None,
-        #     timeout=None,
-        #     presence_penalty=0.0,
-        #     frequency_penalty=0.0,
-        #     best_of=1,
-        #     # user=None,
-        #     logprobs=None,
-        #     echo=False
-        # )
-
-        # return ai_response["choices"][0]["text"]
         ai_response = await g4f.ChatCompletion.create_async(
             model=gpt_35_turbo,
             messages=[
@@ -74,23 +57,6 @@ class FreeGPTTextHelper:
             A string containing the generated promotional description.
         """
 
-        # ai_response = await openai.Completion.acreate(
-        #     engine=os.getenv("AI_TEXT_MODEL"),
-        #     prompt=PRODUCT_DESCRIPTION_PROMPT.format(product_name),
-        #     temperature=0.5,
-        #     max_tokens=2000,
-        #     n=1,
-        #     stop=None,
-        #     timeout=None,
-        #     presence_penalty=0.0,
-        #     frequency_penalty=0.0,
-        #     best_of=1,
-        #     # user=None,
-        #     logprobs=None,
-        #     echo=False,
-        # )
-
-        # return ai_response["choices"][0]["text"]
         ai_response = await g4f.ChatCompletion.create_async(
             model=gpt_35_turbo,
             messages=[
@@ -116,23 +82,6 @@ class FreeGPTTextHelper:
         Returns:
         str: A string containing the generated search tags."""
 
-        # ai_response = await openai.Completion.acreate(
-        #     engine=os.getenv("AI_TEXT_MODEL"),
-        #     prompt=CATEGORY_SEARCH_QUERIES_PROMPT.format(category_name),
-        #     max_tokens=2000,
-        #     temperature=0.5,
-        #     n=1,
-        #     stop=None,
-        #     timeout=None,
-        #     presence_penalty=0.0,
-        #     frequency_penalty=0.0,
-        #     best_of=1,
-        #     # user=None,
-        #     logprobs=None,
-        #     echo=False,
-        # )
-
-        # return ai_response["choices"][0]["text"]
         ai_response = await g4f.ChatCompletion.create_async(
             model=gpt_35_turbo,
             messages=[
@@ -156,23 +105,6 @@ class FreeGPTTextHelper:
         Returns:
         str: A string containing the generated product group description."""
 
-        # ai_response = await openai.Completion.acreate(
-        #     engine=os.getenv("AI_TEXT_MODEL"),
-        #     prompt=CATEGORY_DESCRIPTION_PROMPT.format(category_name),
-        #     max_tokens=2000,
-        #     temperature=0.5,
-        #     n=1,
-        #     stop=None,
-        #     timeout=None,
-        #     presence_penalty=0.0,
-        #     frequency_penalty=0.0,
-        #     best_of=1,
-        #     # user=None,
-        #     logprobs=None,
-        #     echo=False,
-        # )
-
-        # return ai_response["choices"][0]["text"]
         ai_response = await g4f.ChatCompletion.create_async(
             model=gpt_35_turbo,
             messages=[
