@@ -10,6 +10,7 @@ PRODUCT_SEARCH_QUERY_PROMPT = """Need search queries for {}:
     Enter the search terms separated by commas. The more queries you add, the better your product will appear.
     Do not use additional words like "buy", "order", "region" - they are added automatically.
     And make this queries in one line but separated with coma.
+    In response leave only search queries, without your personal comments.
     """
 
 PRODUCT_DESCRIPTION_PROMPT = """
