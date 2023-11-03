@@ -5,3 +5,4 @@ templates = Jinja2Templates(directory="templates")
 
 class UserInput(BaseModel):
     input: str
+    target: str | None
