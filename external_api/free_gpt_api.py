@@ -17,7 +17,7 @@ class FreeGPTTextHelper:
     @staticmethod
     async def get_product_search_queries(product_name: str) -> str:
         """
-        Generates search queries for a given product using OpenAI's text generation API.
+        Generates search queries for a given product using FreeGPT's text generation API.
 
         Parameters:
         -----------
@@ -44,7 +44,7 @@ class FreeGPTTextHelper:
     @staticmethod
     async def get_product_description(product_name: str) -> str:
         """
-        Generates a promotional description for a given product using OpenAI's text generation API.
+        Generates a promotional description for a given product using FreeGPT's text generation API.
 
         Parameters:
         -----------
